@@ -5,5 +5,6 @@ Requires youtube-dl and ffmpeg.
 
 TODO
 
+Write the documentation.
 Finish the code.
 Make a Bash version.
