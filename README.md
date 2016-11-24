@@ -3,6 +3,9 @@ Script to automatically download YouTube auto-generated music with tagging and a
 
 Requires youtube-dl and ffmpeg.
 
+GOAL
+Finish an m4a only version.
+
 TODO
 
 Write the documentation.
