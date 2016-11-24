@@ -1,9 +1,9 @@
-@echo off
+rem @echo off
 title YouTube auto-generated music downloader with tagging and cover art
 
 set processed=Processed\
 set unprocessed=Unprocessed\
-set format=opus50k
+set format=m4a128k
 set skipdownloadcover=no
 
 if %skipdownloadcover%==no set coverid=,248
@@ -21,6 +21,10 @@ exit /b
 :download
 set /p url=Enter URL:
 
+echo Checking link...
+youtube-dl -s %url%
+if %errorlevel%==1 echo There was a problem retrieving the video. Check that the link is correct.&pause&exit /b
+
 echo Getting name and artist...
 for /f "delims=" %%a in ('youtube-dl --get-filename -o "%%(title)s" "%url%"') do @set songtitle=%%a
 for /f "delims=" %%a in ('youtube-dl --get-filename -o "%%(uploader)s" "%url%"') do @set uploader=%%a
@@ -33,7 +37,12 @@ echo Downloading song...
 youtube-dl.exe -f %id%%coverid% -o "%unprocessed%%uploader% - %songtitle%.%%(ext)s" %url% -x
 if %skipdownloadcover%==yes goto skipcover
 ffmpeg -i "%unprocessed%%uploader% - %songtitle%.webm" -ss 00:00:06 -vf crop=734:734:109:108 -q:v 0 -vframes 1 "%unprocessed%art.jpg"
-ffmpeg -i "%unprocessed%%uploader% - %songtitle%.%extension%" -metadata title="%songtitle%" -metadata artist="%uploader%" -codec copy "%unprocessed%%uploader% - %songtitle%.%extension%"
+rem ffmpeg -i "%unprocessed%%uploader% - %songtitle%.%extension%" --artwork "%unprocessed%art.jpg" -codec copy -id3v2_version 3 -metadata title="%songtitle%" -metadata artist="%uploader%" "%processed%%uploader% - %songtitle%.%extension%"
+ffmpeg -i "%unprocessed%%uploader% - %songtitle%.%extension%" -metadata title="%songtitle%" -metadata artist="%uploader%" -codec copy "%processed%%uploader% - %songtitle%.%extension%"
+AtomicParsley "%unprocessed%%uploader% - %songtitle%.%extension%" --artwork art.jpg 
+del "%unprocessed%%uploader% - %songtitle%.*"
+del "%unprocessed%art.jpg"
+
 
 echo Finished!
 pause
