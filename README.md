@@ -6,6 +6,7 @@ Requires youtube-dl, ffmpeg and tageditor.
 TODO
 
 Properly format this readme...
+Add more possible metadata (album, other artists, year)
 Add Opus, Vorbis, MP3...
 Write the documentation.
 Finish the code.
