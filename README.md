@@ -11,3 +11,6 @@ Add Opus, Vorbis, MP3...
 Write the documentation.
 Finish the code.
 maybe write a Bash version?
+
+
+and lots more...
