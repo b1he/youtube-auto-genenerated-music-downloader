@@ -24,6 +24,7 @@ set /p url=Enter URL:
 echo Checking link...
 %bin%youtube-dl -s %url% -q >NUL
 if %errorlevel%==1 echo There was a problem retrieving the video. Check that the link is correct.&pause&exit /b
+if not exist "%musicdir%" mkdir %musicdir%
 
 echo Getting title and artist...
 for /f "delims=" %%a in ('%bin%youtube-dl --get-filename -o "%%(title)s" "%url%"') do @set songtitle=%%a

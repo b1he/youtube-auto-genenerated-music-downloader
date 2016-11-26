@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!Downloader.bat
+!ffmpeg.exe
+!tageditor.exe
+!youtube-dl.exe
+
+# ...even if they are in subdirectories
+!*/
