@@ -38,3 +38,6 @@ You can also edit the batch file to change some parameters:
 
 3. Various artists...
 * https://www.youtube.com/watch?v=AKXlKL7CAZk
+
+4. Dealing with the '&' symbol
+* https://www.youtube.com/watch?v=E-2lXqrU2Ks
