@@ -6,7 +6,7 @@ Uses youtube-dl, ffmpeg and tageditor.
 One of my first projects that actually does something (not just a hello world one.)
 
 ## Instructions
-Run the batch file and paste the YouTube auto-generated music link there (ctrc+v if on Windows 10 or right click with your mouse).
+Run the batch file and paste the YouTube auto-generated music link there (ctrl+v if on Windows 10 or right click with your mouse).
 
 You can also edit the batch file to change some parameters:
 * musicdir: The folder where the music will be stored.
