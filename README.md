@@ -26,21 +26,3 @@ You can also edit the batch file to change some parameters:
 * and lots more...
 * Change the way the artist's name is retrieved
 * Some scenarios to fix.... 
-
-
-1. Names in foreign languages...
-*  https://www.youtube.com/watch?v=Nh_bdvA8cVM
-* https://www.youtube.com/watch?v=-mLpe7KUg9U
-
-2. Lots of artists...
-* https://www.youtube.com/watch?v=l-uVkrzo8eU
-* https://www.youtube.com/watch?v=6I2y_UbVz4U
-
-3. Various artists...
-* https://www.youtube.com/watch?v=AKXlKL7CAZk
-
-4. Dealing with the '&' symbol
-* https://www.youtube.com/watch?v=E-2lXqrU2Ks
-* https://www.youtube.com/watch?v=l-uVkrzo8eU
-5. Dealing with the '/' symbol
-* https://www.youtube.com/watch?v=7tP1NgNG-wI
