@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 title YouTube auto-generated music downloader with tagging and cover art
 echo YouTube auto-generated music downloader with tagging and cover art
 
