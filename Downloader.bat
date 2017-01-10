@@ -36,14 +36,14 @@ if "%uploader%"==Various Artists goto set /p uploader=Please enter the main arti
 if %skipdownloadcover%==no echo Downloading song and cover...&goto withcover
 echo Downloading song...
 :withcover
-%bin%\youtube-dl.exe -f %id%%coverid% -o "%musicdir%%uploader% - %songtitle%.%%(ext)s" %url% -x -q 2>NUL
+%bin%youtube-dl.exe -f %id%%coverid% -o "%musicdir%%filename%.%%(ext)s" %url% -x -q 2>NUL
 if %skipdownloadcover%==yes goto skipcover
 
 echo Extracting album art...
-%bin%ffmpeg -loglevel panic -i "%musicdir%%uploader% - %songtitle%.webm" -ss 00:00:06 -vf crop=732:732:110:108 -q:v 0 -vframes 1 "%musicdir%art.jpg" 2>NUL
-%bin%tageditor set title="%songtitle%" artist="%uploader%" cover="%musicdir%art.jpg" --files "%musicdir%%uploader% - %songtitle%.%extension%"
-del "%musicdir%%uploader% - %songtitle%.webm"
-del "%musicdir%%uploader% - %songtitle%.*.bak
+%bin%ffmpeg -loglevel panic -i "%musicdir%%filename%.webm" -ss 00:00:06 -vf crop=732:732:110:108 -q:v 0 -vframes 1 "%musicdir%art.jpg" 2>NUL
+%bin%tageditor set title="%songtitle%" artist="%uploader%" cover="%musicdir%art.jpg" --files "%musicdir%%filename%.%extension%"
+del "%musicdir%%filename%.webm"
+del "%musicdir%%filename%.*.bak
 del "%musicdir%art.jpg"
 
 
@@ -52,11 +52,9 @@ pause
 exit /b
 
 :skipcover
-@%bin%tageditor set title="%songtitle%" artist="%uploader%" "%musicdir%%uploader% - %songtitle%.%extension%" 1>NUL
-del "%musicdir%%uploader% - %songtitle%.*.bak
+@%bin%tageditor set title="%songtitle%" artist="%uploader%" "%musicdir%%filename%.%extension%" 1>NUL
+del "%musicdir%%filename%.*.bak
 
 echo Finished!
 pause
 exit /b
-
-pause

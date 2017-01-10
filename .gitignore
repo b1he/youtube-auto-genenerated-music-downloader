@@ -7,6 +7,7 @@
 !ffmpeg.exe
 !tageditor.exe
 !youtube-dl.exe
+!ffprobe.exe
 
 # ...even if they are in subdirectories
 !*/
