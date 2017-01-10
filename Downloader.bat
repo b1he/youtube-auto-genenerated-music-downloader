@@ -1,5 +1,6 @@
 @echo off
 title YouTube auto-generated music downloader with tagging and cover art
+echo YouTube auto-generated music downloader with tagging and cover art
 
 set musicdir=Music\
 set bin=bin\
@@ -14,7 +15,7 @@ if %format%==m4a128k set id=140&set extension=m4a&goto download
 if %format%==vorbis128k set id=171&set extension=ogg&goto download
 rem There's no more 192k aac on YouTube?
 
-echo Please edit this file and choose a correct format: opus50k, opus70k, opus160k, m4a128k, m4a192k or vorbis128k
+echo Please edit this file and choose a correct format: opus50k, opus70k, opus160k, m4a128k or vorbis128k
 pause
 exit /b
 
@@ -29,6 +30,9 @@ if not exist "%musicdir%" mkdir %musicdir%
 echo Getting title and artist...
 for /f "delims=" %%a in ('%bin%youtube-dl --get-filename -o "%%(title)s" "%url%"') do @set songtitle=%%a
 for /f "delims=" %%a in ('%bin%youtube-dl --get-filename -o "%%(uploader)s" "%url%"') do @set uploader=%%a
+if not "%uploader%"=="%uploader: - Topic=%" goto pass
+echo Is this a YouTube auto-generated music link?&pause&exit /b
+:pass
 set uploader=%uploader: - Topic=%
 set filename=%uploader% - %songtitle%
 echo %filename%
@@ -52,7 +56,7 @@ pause
 exit /b
 
 :skipcover
-@%bin%tageditor set title="%songtitle%" artist="%uploader%" "%musicdir%%filename%.%extension%" 1>NUL
+%bin%tageditor set title="%songtitle%" artist="%uploader%" "%musicdir%%filename%.%extension%" 1>NUL
 del "%musicdir%%filename%.*.bak
 
 echo Finished!
